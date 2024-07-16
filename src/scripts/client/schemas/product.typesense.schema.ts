@@ -1,0 +1,32 @@
+import { CollectionCreateSchema } from 'typesense/lib/Typesense/Collections';
+
+export const ProductSchema: CollectionCreateSchema = {
+  name: 'products',
+  fields: [
+    { name: 'item_id', type: 'int32' },
+    { name: 'product_id', type: 'string' },
+    { name: 'status', type: 'string' },
+    { name: 'in_stock', type: 'bool' },
+    { name: 'variant_id', type: 'string' },
+    { name: 'rating', type: 'int32' },
+    { name: 'sku', type: 'string' },
+    { name: 'slug', type: 'string' },
+    { name: 'variant_slug', type: 'string' },
+    { name: 'category_slug', type: 'string' },
+    { name: 'category_names', type: 'string[]' },
+    { name: 'name', type: 'string' },
+    { name: 'mini_desc', type: 'string' },
+    { name: 'image', type: 'string' },
+    { name: 'is_top', type: 'bool', facet: true },
+    { name: 'category', type: 'string', facet: true },
+    { name: 'brand', type: 'string', facet: true },
+    { name: 'brand_slug', type: 'string' },
+    { name: 'brand_id', type: 'int32' },
+    { name: 'category_id', type: 'int32' },
+    { name: 'color', type: 'string', facet: true },
+    { name: 'price', type: 'float', facet: true },
+    { name: 'material', type: 'string', facet: true },
+    { name: 'size', type: 'string', facet: true },
+  ],
+  default_sorting_field: 'item_id',
+};

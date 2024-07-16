@@ -1,0 +1,4 @@
+export enum ServiceNames {
+    AMQP_SERVICE = 'AMQP_SERVICE',
+    GRPC_COMPANY_PACKAGE = 'GRPC_COMPANY_PACKAGE'
+}
