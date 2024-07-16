@@ -1,0 +1,33 @@
+version: '3'
+services:
+  product-service:
+    build: .
+    container_name: product-service
+    working_dir: /usr/src/app
+    depends_on: 
+      - product-mongo
+    command: npm run start:dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    env_file:
+      - .env
+    networks:
+      - productnetwork
+  product-mongo:
+    image: mongo:4.2.3-bionic
+    container_name: product-mongo
+    hostname: productnetwork-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongodb:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: productpassword
+    networks:
+      - productnetwork
+networks:
+  productnetwork:

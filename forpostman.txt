@@ -1,0 +1,59 @@
+addNew Category 
+
+{
+    "data": {
+        "height": "incididunt Excepteur adipisicing nulla",
+        "id": "pariatur aliquip labore proident",
+        "image": "nulla sunt incididunt",
+        "length": "reprehenderit amet dolore",
+        "status": "ACTIVE",
+        "translations": [
+            {
+                "name": "Lorem ipsum",
+                "description": "ut nisi veniam qui",
+                "key": "anim sit ut Ut"
+            },
+            {
+                "key": "aliqua reprehenderit sit",
+                "name": "sed ad",
+                "description": "culpa aliquip laboris"
+            },
+            {
+                "key": "ad",
+                "name": "commodo",
+                "description": "quis ullamco voluptate velit in"
+            }
+        ],
+        "weight": "consequat",
+        "width": "reprehenderit qui amet"
+    }
+}
+
+getCategories
+
+{
+    "query":{
+        status: "ACTIVE"
+    }
+}
+
+getCategory 
+ {
+    "id":"asdasd"
+ }
+
+ updateCategory 
+
+ {
+    "id": "62e2d00d260b08b1281deb28",
+    "data": {
+        "status": "INACTIVE"
+    }
+}
+
+updateStatus Category 
+
+{
+    "id": "62e2d00d260b08b1281deb28",
+    "status": "INACTIVE",
+}
