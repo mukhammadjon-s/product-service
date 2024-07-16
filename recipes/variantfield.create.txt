@@ -1,0 +1,42 @@
+{
+    "categories": [],
+    "characteristics": [
+        {
+            "create": {
+                "status": "ACTIVE"
+            }
+        }
+    ],
+    "ord": "Lorem ut",
+    "slug": "nostrud aliquip dolore occaecat",
+    "translation": {
+        "name": {
+            "uz":"asdasd",
+            "ru":"asdasdas",
+            "en":"asdasdasd"
+        }
+    },
+    "type": "qui non",
+    "variantValues": [
+        {
+            "connect": {
+                "id": "62efaefde556d526ed0113fe"
+            }
+        },
+        {
+            "create": {
+                "length": "amet irure non in ad",
+                "height": "ea pariatur proident labore in",
+                "reservedQuantity": -1986946509,
+                "warehouseId": 1962804432,
+                "width": "ullamco enim labore officia",
+                "extId": "proident consequat consectetur",
+                "quantity": 1116560978,
+                "companyId": -2134634511,
+                "price": -1146392561,
+                "weight": "id",
+
+            }
+        }
+    ]
+}

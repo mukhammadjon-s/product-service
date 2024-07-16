@@ -1,0 +1,1919 @@
+syntax = "proto3";
+
+package product;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+
+service VariantService {
+  rpc GetVariantGroupByProductId(GetVGReq) returns (GetVGRes) {}
+  rpc GetVariantGroups(GetVGReq) returns (VariantGroupsResponse) {}
+  rpc SetVariantGroupImages (VariantGroupsSetImageRequest) returns (VariantGroupsResponse) {}
+  rpc AddImage(AddVPReq) returns (AddVPRes) {}
+  rpc UpdateImage(UpdateVPReq) returns (AddVPRes) {}
+  rpc RemoveImage(DelVPReq) returns (AddVPRes) {}
+  rpc GetProductVariant (GetProductVariantReq) returns (GetProductVariantRes) {}
+  rpc GetAll(GetAllVariantReq) returns (GetAllVariantRes) {}
+  rpc GetAllVariants(GetAllVariantsReq) returns (GetAllVariantsRes) {}
+  rpc GetOne (GetOneVariantReq) returns (GetOneVariantRes) {}
+  rpc GetOneVariant(GetOneVariantRequest) returns (GetOneVariantResp) {}
+  rpc GetProductByVariantId (GetProductByVariantIdReq) returns (GetProductByVariantIdRes) {}
+  rpc AddNew(AddNewVariantReq) returns (AddNewVariantRes) {}
+  rpc VariantAdd(VariantCreate) returns (AddNewVariantRes) {}
+  rpc Update(UpdateVariantsReq) returns (UpdateVariantRes) {}
+  rpc UpdateStatus(UpdateStatusVariantReq) returns (UpdateStatusVariantRes) {}
+  rpc Delete(DelReq) returns (DelReq) {}
+  rpc GetVariantGroup(GetVariantGroupRequest) returns (GetVariantGroupResponse) {}
+  rpc GetVariantGroupById(GetVariantGroupByIdRequest) returns (GetVariantGroupResponse) {}
+  rpc LoadCompanyFromVariant(GetCompanyFromVariantReq) returns (GetCompanyFromVariant) {}
+  rpc CalculateDeliveryPrice(CalculateDeliveryPriceReq) returns (CalculateDeliveryPriceRes) {}
+  rpc GetVariantGroupsByProductIds(GetVariantGroupsByProductIdsReq) returns (GetVariantGroupsByProductIdsRes) {}
+  rpc SetDiscountPercentageForVariant(SetDiscountPercentageForVariantReq) returns(SetDiscountPercentageForVariantRes) {}
+  rpc SetDiscountPercentageForVariantGroup(SetDiscountPercentageForVariantGroupReq) returns(SetDiscountPercentageForVariantGroupRes) {}
+  rpc GetValueByImportId(GetValueByImportIdReq) returns (GetValueByImportIdRes) {}
+  rpc UpdateQuantity(UpdateQuantityReq) returns (UpdateQuantityRes) {}
+  rpc GetVariantByBillzId(GetVariantByBillzIdReq) returns (GetVariantByBillzIdRes) {}
+  rpc PublishVariantGroup(PublishVariantGroupReq) returns (PublishVariantGroupRes) {}
+  rpc Publish(PublishReq) returns (PublishRes) {}
+  rpc UnpublishedGroups(UnpublishedGroupsReq) returns (UnpublishedGroupsRes) {}
+  rpc DecreaseQuantity(DecreaseQuantityReq) returns (DecreaseQuantityRes) {}
+  rpc IncreaseQuantity(IncreaseQuantityReq) returns (google.protobuf.Empty) {}
+  rpc UpdateVariantGroupByCompany(UpdateVariantGroupByCompanyReq) returns (google.protobuf.Empty) {}
+  rpc SyncAllVariantGroup(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc GetVariantGroupBySku(GetVariantGroupBySkuReq) returns (GetVariantGroupBySkuRes) {}
+}
+
+service ProductService {
+  rpc GetAll(GetAllProductsRequest) returns (GetAllProductsResponse) {}
+  rpc GetOne (GetOneProductRequest) returns (GetOneProductResponse) {}
+  rpc GetDetails (GetOneProductRequest) returns (GetProductDetailsResponse) {}
+  rpc Create(CreateProductRequest) returns (CreateProductResponse) {}
+  rpc Delete (DeleteProductRequest) returns (DeleteOneResponse) {}
+  rpc Update (UpdateProductRequest) returns (CreateProductResponse) {}
+  rpc GetProductsByIds (GetProductsByIdsReq) returns (GetProductsByIdsRes) {}
+  rpc GetProductById (GetProductByIdReq) returns (GetProductByIdRes) {}
+  rpc UploadExcel (UploadExcelReq) returns (UploadExcelRes) {}
+  rpc GetProductByBillzId (GetProductByBillzIdReq) returns (GetProductByBillzIdRes) {}
+}
+
+service VariantValueService {
+  rpc GetAll(GetAllVVReq) returns (GetAllVVRes) {}
+  rpc GetOne (GetAllVVReq) returns (GetOneVVRes) {}
+  rpc AddNew(CreateVVReq) returns (GetOneVVRes) {}
+  rpc Delete (DeleteProductRequest) returns (DeleteOneResponse) {}
+  rpc Update (UpdateVVReq) returns (GetOneVVRes) {}
+}
+
+service BrandService {
+  rpc GetAll (GetAllBrandsReq) returns (GetAllBrandsRes) {}
+  rpc GetOne (GetOneBrandReq) returns (GetOneBrandRes) {}
+  rpc AddNew (AddNewBrandReq) returns (AddNewBrandRes) {}
+  rpc Update (UpdateBrandReq) returns (UpdateBrandRes) {}
+  rpc UpdateStatus (UpdateStatusBrandReq) returns (UpdateStatusBrandRes) {}
+  rpc Delete (DelReq) returns (DelRes) {}
+  rpc GetOneByName (GetBrandByNameReq) returns (GetOneBrandRes) {}
+}
+
+service VariantFieldService {
+  rpc GetAll(GetAllVariantFieldReq) returns (GetAllVariantFieldRes) {}
+  rpc GetOne (GetOneVariantFieldReq) returns (GetOneVariantFieldRes) {}
+  rpc AddNew(CreateVFReq) returns (GetOneVariantFieldRes) {}
+  rpc Delete (DeleteProductRequest) returns (DeleteOneResponse) {}
+  rpc Update (UpdateVFReq) returns (GetOneVariantFieldRes) {}
+}
+
+message GetVariantGroupBySkuReq {
+  string sku = 1;
+}
+
+message GetVariantGroupBySkuRes {
+  VariantGroup variantGroup = 1;
+}
+
+message PublishReq {
+  string variantGroupId = 1;
+  repeated string images = 2;
+  PublishProductValues product = 3;
+}
+
+message PublishProductValues {
+  optional string categoryId = 1;
+  repeated string categories = 2;
+  optional string material = 3;
+  optional string gender = 4;
+  optional string country = 5;
+  optional string season = 6;
+  optional string brandId = 7;
+  optional string length = 8;
+  optional string weight = 9;
+  optional string width = 10;
+  optional string height = 11;
+  optional string content = 12;
+  optional int32 rating = 13;
+}
+
+message PublishRes {
+  bool success = 1;
+  string result = 2;
+}
+
+message UpdateVariantGroupByCompanyReq {
+  string companyId = 1;
+}
+
+message DecreaseQuantityReq {
+  string variantId = 1;
+  int32 quantity = 2;
+}
+
+message DecreaseQuantityRes {
+  bool status = 1;
+}
+
+message IncreaseQuantityReq {
+  repeated IncreaseQuantityValue variants = 1;
+}
+
+message IncreaseQuantityValue {
+  string variantId = 1;
+  int32 quantity = 2;
+}
+
+message UnpublishedGroupsReq {
+  string companyId = 1;
+  string query = 2;
+  optional int32 page = 3;
+  optional int32 pagesize = 4;
+}
+
+message UnpublishedGroupsRes {
+  int32 page = 1;
+  int32 total = 2;
+  repeated VariantGroup result = 3;
+}
+
+message PublishVariantGroupReq {
+  string variantGroupId = 1;
+}
+
+message PublishVariantGroupRes {
+  optional string result = 1;
+  bool success = 2;
+}
+
+message GetProductByBillzIdReq {
+  int32 billzId = 1;
+}
+
+message GetProductByBillzIdRes {
+  Product product = 1;
+}
+
+message GetVariantByBillzIdReq {
+  int32 billzId = 1;
+}
+
+message GetVariantByBillzIdRes {
+  Variant variant = 1;
+}
+
+message GetBrandByNameReq {
+  string name = 1;
+}
+
+message UpdateQuantityReq {
+  string id = 1;
+  int32 quantity = 2;
+}
+
+message UpdateQuantityRes {
+  string id = 1;
+  Warehouses warehouse = 2;
+}
+
+message GetValueByImportIdReq {
+  string importId = 1;
+}
+
+message GetValueByImportIdRes {
+  repeated VariantGroupByImport variantGroup = 1;
+}
+
+message VariantGroupByImport {
+ string value = 1;
+ string sku = 2;
+ repeated ProductByImport products = 3;
+ repeated string variantsSizes = 4;
+}
+
+message ProductByImport {
+  message Uz {
+        string name = 1;
+        string content = 2;
+      }
+
+  message Ru {
+    string name = 1;
+    string content = 2;
+  }
+
+  message En {
+    string name = 1;
+    string content = 2;
+  }
+
+  message Translation {
+    Uz uz = 1;
+    Ru ru = 2;
+    En en = 3;
+  }
+ optional Translation translation = 1;
+}
+
+message UploadExcelReq {
+  string fieldname = 1;
+  string originalname = 2;
+  string encoding = 3;
+  string mimetype = 4;
+  string buffer = 5;
+  int32 size = 6;
+}
+
+message UploadExcelRes {
+  string importId = 1;
+}
+
+message SetDiscountPercentageForVariantReq {
+  string variantId = 1;
+  int32 discountPercentage = 2;
+}
+
+message SetDiscountPercentageForVariantRes {
+  Variant variant = 1;
+}
+
+message SetDiscountPercentageForVariantGroupReq {
+  string variantGroupId = 1;
+  int32 discountAmount = 2;
+}
+
+message SetDiscountPercentageForVariantGroupRes {
+  VariantGroup variantGroup = 1;
+}
+
+message GetProductsByIdsReq {
+  repeated string productIds = 1;
+}
+
+message GetProductByIdReq {
+  string productId = 1;
+}
+
+message GetProductsByIdsRes {
+  repeated VariantProduct products = 1;
+}
+
+message GetProductByIdRes {
+  VariantProduct products = 1;
+}
+
+message GetCompanyFromVariantReq {
+  repeated string variantsIds = 1;
+}
+
+message GetCompanyFromVariant {
+ repeated GetCompanyFromVariantRes companyVariants = 1;
+}
+
+message GetVariantGroupsByProductIdsReq {
+ repeated string productIds = 1;
+}
+
+message GetVariantGroupsByProductIdsRes {
+ repeated VariantGroups variantGroups = 1;
+}
+
+message VariantGroups {
+ string _id = 1;
+ string productId = 2;
+ repeated string variants = 3;
+ string sku = 4;
+ optional string slug = 5;
+ optional int32 discountAmount = 6;
+}
+
+message CalculateDeliveryPriceReq {
+  repeated SelectedVariantsData selectedVariantsData = 1;
+  optional string districtId = 2;
+  optional string pvzId = 3;
+  optional string deliveryType = 4;
+}
+
+message CalculateDeliveryPriceRes {
+  int32 total = 1;
+  string detailed = 2;
+}
+
+message SelectedVariantsData {
+  int32 quantity = 1;
+  string variantId = 2;
+}
+
+message GetCompanyFromVariantRes {
+  string _id = 1;
+  string status = 2;
+  int32 price = 3;
+  repeated Warehouses warehouses = 4;
+  Values values = 5;
+  string productId = 6;
+  string mainField = 7;
+  string createdAt = 8;
+  string updatedAt = 9;
+  int32 variantItemId = 10;
+  int32 _v = 11;
+  string variantGroupId = 12;
+  repeated VariantProduct product = 13;
+  repeated VariantGroupsImages variantGroupsImages = 14;
+}
+
+message VariantGroupsImages {
+  string _id = 1;
+  repeated VariantGroupImages images = 2;
+  optional int32 discountAmount = 3;
+}
+
+message VariantProduct {
+  string _id = 1;
+  string status = 2;
+  string brand = 3;
+  repeated string categories = 4;
+  string category = 5;
+  repeated Variant variants = 6;
+  repeated Characteristic characteristics = 7;
+  string companyId = 8;
+  bool isSale = 9;
+  int32 rating = 10;
+  bool isTop = 11;
+  bool isPreorder = 12;
+  string weight = 13;
+  string width = 14;
+  string height = 15;
+  ProductTranslation translation = 16;
+  string material = 17;
+  string gender = 18;
+  string country = 19;
+  string mainField = 20;
+  string createdAt = 21;
+  string updatedAt = 22;
+  string slug = 23;
+  int32 productItemId = 24;
+  int32 _v = 25;
+}
+
+message Uz {
+  string name = 1;
+  string content = 2;
+}
+
+message Ru {
+  string name = 1;
+  string content = 2;
+}
+
+message En {
+  string name = 1;
+  string content = 2;
+}
+
+message ProductTranslation {
+  Uz uz = 1;
+  Ru ru = 2;
+  En en = 3;
+}
+
+message GetOneVariantResponse {
+
+  message Uz {
+    string field = 1;
+    string value = 2;
+    string slug = 3;
+  }
+
+  message Ru {
+    string field = 1;
+    string value = 2;
+    string slug = 3;
+  }
+
+  message En {
+    string field = 1;
+    string value = 2;
+    string slug = 3;
+  }
+
+  message Translation {
+    repeated Uz uz = 1;
+    repeated Ru ru = 2;
+    repeated En en = 3;
+  }
+
+  message Values {
+    Translation translation = 1;
+  }
+
+  message Warehouses {
+    string id = 1;
+    uint32 quantity = 2;
+  }
+
+  message  Variant {
+    optional  string _id = 1;
+
+    optional uint32 price = 2;
+    optional Product productId = 3;
+    optional string status = 4;
+    optional Values values = 5;
+    optional uint32 variantItemId = 6;
+    repeated Warehouses warehouses = 7;
+    optional VariantGroup variantGroup = 8;
+    optional string createdAt = 20;
+    optional string updatedAt = 21;
+  }
+
+  Variant data = 1;
+}
+
+service CharacteristicService {
+  rpc GetAll(GetAllCharReq) returns (GetAllCharRes) {}
+  rpc GetOne (GetAllCharReq) returns (GetOneCharFieldRes) {}
+  rpc Create(CreateVFReq) returns (GetOneCharFieldRes) {}
+  rpc Delete (DeleteProductRequest) returns (DeleteOneResponse) {}
+  rpc Update (UpdateCharReq) returns (GetOneCharFieldRes) {}
+}
+
+service CategoryService {
+  rpc GetCategories (GetCategoriesRequest) returns (GetCategoriesResponse) {}
+  rpc GetCategory (GetCategoryRequest) returns (GetCategoryResponse) {}
+  rpc GetTreeCategory (GetTreeCategoryReq) returns (GetTreeCategoryRes) {}
+  rpc AddNew (AddNewCategoryRequest) returns (AddNewCategoryResponse) {}
+  rpc Update (UpdateCategoryRequest) returns (UpdateCategoryResponse) {}
+  rpc UpdateStatus (UpdateStatusCategoryRequest) returns (UpdateStatusCategoryResponse) {}
+  rpc Delete (DelReq) returns (DelRes) {}
+  rpc GetOneByName (GetCategoryByNameReq) returns (GetCategoryResponse) {}
+  rpc GetChildCategories (GetChildCategoriesReq) returns (GetChildCategoriesRes) {}
+}
+
+service CharacteristicGroupService {
+  rpc GetAll(GetAllChGReq) returns (GetAllChGRes) {}
+  rpc GetOne (GetAllChGReq) returns (GetOneChGRes) {}
+  rpc AddNew(CreateChGReq) returns (GetOneChGRes) {}
+  rpc Delete (DeleteProductRequest) returns (DeleteOneResponse) {}
+  rpc Update (UpdateChGReq) returns (GetOneChGRes) {}
+}
+
+service DbCleanerService {
+  rpc DbClean(EmptyReq) returns (DelRes) {}
+}
+
+message GetChildCategoriesRes {
+  repeated string data = 1;
+}
+
+message GetChildCategoriesReq {
+  string name = 1;
+}
+
+message GetCategoryByNameReq {
+  string name = 1;
+}
+
+message EmptyReq {
+
+}
+
+message GetVariantGroupRequest {
+  string slug = 1;
+}
+
+message GetVariantGroupByIdRequest {
+  string id = 1;
+}
+
+message GetVariantGroupResponse {
+  VariantGroupSlug data = 1;
+}
+
+message AddVPReq {
+  string productId = 1;
+  string image = 2;
+}
+
+message UpdateVPReq {
+  string productId = 1;
+  repeated VariantGroupImages images = 2;
+  string id = 3;
+  optional string sku = 4;
+}
+
+message DelVPReq {
+  string productId = 1;
+  string id = 2;
+}
+
+message GetVGReq {
+  string productId = 1;
+}
+
+message AddVPRes {
+  VariantGroup data = 1;
+}
+
+message GetVGRes {
+  repeated VariantGroup data = 1;
+}
+
+message VariantGroupsSetImageRequest {
+  repeated string photos = 1;
+  string sku = 2;
+  string groupId = 3;
+}
+
+message VariantGroupsResponseItem {
+  string id = 1;
+  string color = 2;
+  string sku = 3;
+  string sizes = 4;
+  repeated string photos = 5;
+}
+
+message VariantGroupsResponse {
+  repeated VariantGroupsResponseItem data = 1;
+}
+
+message VariantPhoto {
+  string id = 1;
+  string image = 2;
+}
+
+message VariantCreate {
+  optional string id = 1;
+  enum VariantStatusEnum {
+    ACTIVE = 0;
+    INACTIVE = 1;
+  }
+  VariantStatusEnum status = 2;
+//  int32 warehouseId = 3;
+  int32 companyId = 4;
+  int32 price = 5;
+  int32 quantity = 6;
+  string productId = 14;
+  optional string extId = 8;
+  optional string length = 9;
+  optional string weight = 10;
+  optional string width = 11;
+  optional string height = 12;
+  VariantValues values = 13;
+  string sku = 15;
+  repeated Warehouse warehouses = 18;
+  optional int32 rating = 19;
+  optional string barcode = 20;
+  optional int32 billzId = 21;
+}
+
+message VariantValueData {
+  string field = 1;
+  string value = 2;
+  string slug = 3;
+}
+
+message VariantValuesTranslation {
+  repeated VariantValueData uz = 1;
+  repeated VariantValueData ru = 2;
+  repeated VariantValueData en = 3;
+}
+
+message VariantValues {
+   VariantValuesTranslation translation = 1;
+}
+
+message VariantValuesWithMultipleSizes {
+  repeated VariantValues variantValues = 1;
+}
+
+message values {
+  optional string id = 1;
+  optional google.protobuf.Struct translation = 2;
+}
+
+message fields {
+  optional string id = 1;
+  optional string ord = 2;
+  optional string slug = 3;
+  optional string type = 4;
+  optional google.protobuf.Struct translation = 5;
+  repeated values values = 6;
+}
+
+
+
+
+
+message GetTreeCategoryReq {
+
+}
+message GetTreeCategoryRes {
+  google.protobuf.Struct data = 1;
+}
+
+message GetAllVVReq {
+  bool variantField = 1;
+  bool variants = 2;
+  GetVVWhereReq where = 4;
+  optional int32 page = 5;
+  optional int32 pagesize = 6;
+}
+
+message GetAllVVRes {
+  repeated VariantValue data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message GetVVWhereReq {
+  optional string             id = 1;
+}
+
+message GetOneVVRes {
+  VariantField data = 1;
+}
+
+message TranslateVV {
+  Translate value = 1;
+}
+
+message CreateVVReq {
+  optional CreateVVVariantField variantField = 1;
+  repeated CreateProductVariantsRequest variants = 2;
+  //  optional TranslateVV translation = 3;
+  optional google.protobuf.Struct translation = 3;
+}
+
+message UpdateVVReq{
+  optional string id = 1;
+  //  optional TranslateVV translation = 2;
+  optional google.protobuf.Struct translation = 2;
+}
+
+message CreateVVVariantField {
+
+  optional Variant create = 1;
+  optional CreateProductVariantsConnectRequest connect = 2;
+  string ord = 3;
+  string type = 4;
+  string slug = 5;
+  //  optional VariantFieldTranslation translation = 6;
+  optional google.protobuf.Struct translation = 6;
+  optional string value = 9;
+}
+
+/////
+message GetAllChGReq {
+  bool categories = 1;
+  bool products = 2;
+  bool characteristics = 3;
+  GetChGWhereReq where = 4;
+  optional int32 page = 5;
+  optional int32 pagesize = 6;
+}
+
+message GetAllChGRes {
+  repeated VariantField data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message GetChGWhereReq {
+  optional string             id = 1;
+}
+
+message GetOneChGRes {
+  VariantField data = 1;
+}
+
+message CreateChGTranslationReq {
+  Translate name = 1;
+}
+
+message CreateChGReq {
+  optional CreateProductBrandRequest brandId = 2;
+  repeated CreateProductCategoriesRequest categories = 3;
+  repeated CreateProductVariantsRequest variantValues = 4;
+  repeated CreateProductCharacteristicRequest characteristics = 5;
+  //  CreateVFTranslationReq translation = 16;
+  google.protobuf.Struct translation = 16;
+}
+
+message UpdateChGReq{
+  string id = 1;
+  string ord = 2;
+  string type = 3;
+  string slug = 4;
+}
+
+////////
+message GetAllCharReq {
+  bool categories = 1;
+  bool variantValue = 2;
+  GetCharWhereReq where = 3;
+  optional int32 page = 5;
+  optional int32 pagesize = 4;
+}
+
+message GetAllCharRes {
+  repeated VariantField data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message GetCharWhereReq {
+  optional string             id = 1;
+  optional string             ord = 2;
+  optional string             type = 3;
+  optional bool               slug = 4;
+}
+
+message GetOneCharFieldRes {
+  Characteristic data = 1;
+}
+
+message CreateCharGroupRequest {
+  repeated string products = 4;
+  repeated string characteristics = 5;
+  repeated string categories = 6;
+}
+
+message CreateCharReq {
+  enum CharacteristicStatus {
+    ACTIVE = 0;
+    INACTIVE = 1;
+    PENDING = 2;
+    ARCHIVED = 3;
+  }
+  CharacteristicStatus status = 1;
+  optional CreateCharGroupRequest group = 2;
+  optional CreateVariantProduct product = 3;
+}
+
+message UpdateCharReq{
+  enum CharacteristicStatus {
+    ACTIVE = 0;
+    INACTIVE = 1;
+    PENDING = 2;
+    ARCHIVED = 3;
+  }
+  CharacteristicStatus status = 1;
+}
+
+
+
+////////
+
+message GetOneVariantFieldReq {
+  bool categories = 1;
+  bool variantValue = 2;
+  GetVariantFieldWhereReq where = 3;
+  string id = 5;
+}
+message GetAllVariantFieldReq {
+  bool categories = 1;
+  bool variantValue = 2;
+  GetVariantFieldWhereReq where = 3;
+  optional int32 page = 5;
+  optional int32 pagesize = 4;
+}
+
+message GetAllVariantFieldRes {
+  repeated VariantField data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message GetVariantFieldWhereReq {
+  optional string             id = 1;
+  optional string             ord = 2;
+  optional string             type = 3;
+  optional bool               slug = 4;
+}
+
+message GetOneVariantFieldRes {
+  VariantField data = 1;
+}
+
+message CreateVFTranslationReq {
+  Translate name = 1;
+}
+
+message CreateVFReq {
+  optional CreateProductBrandRequest brandId = 2;
+  repeated CreateProductCategoriesRequest categories = 3;
+  repeated CreateProductVariantsRequest variantValues = 4;
+  repeated CreateProductCharacteristicRequest characteristics = 5;
+  string ord = 6;
+  string type = 7;
+  string slug = 8;
+  //  CreateVFTranslationReq translation = 16;
+  google.protobuf.Struct translation = 16;
+}
+
+message UpdateVFReq{
+  string id = 1;
+  string ord = 2;
+  string type = 3;
+  string slug = 4;
+}
+
+
+
+
+//service CharacteristicService {
+//  rpc GetAll(GetAllCharacteristicsRequest) returns (GetAllCharacteristicsResponse) {}
+//  //  rpc GetOne (GetOneCharacteristicRequest) returns (GetOneCharacteristicResponse) {}
+//  //  rpc Create(CreateCharacteristicRequest) returns (CreateCharacteristicResponse) {}
+//  //  rpc Delete (DeleteCharacteristicRequest) returns (DeleteOneResponse) {}
+//  //  rpc Update (UpdateCharacteristicRequest) returns (CreateCharacteristicResponse) {}
+//}
+
+message GetAllCharacteristicsRequest  {
+  optional bool product = 1;
+}
+
+message GetAllCharacteristicsResponse {
+
+}
+
+message UpdateVariantsReq {
+  repeated UpdateVariantReq variants = 1;
+}
+
+message UpdateVariantReq {
+  string id = 1;
+  optional string productId = 2;
+  optional string status = 3;
+  //  optional int32 warehouseId = 4;
+  optional int32 companyId = 5;
+  optional int32 price = 6;
+  optional int32 quantity = 7;
+  optional int32 reservedQuantity = 8;
+  optional string extId = 9;
+  optional string length = 10;
+  optional string weight = 11;
+  optional string width = 12;
+  optional string height = 13;
+  repeated Warehouse warehouses = 17;
+  optional string sku = 18;
+  optional VariantValues values = 16;
+  optional string material = 19;
+  optional string gender = 20;
+  optional string country = 21;
+  optional int32 rating = 22;
+}
+
+message UpdateVariantRes {
+  repeated Variant result = 1;
+}
+
+message UpdateStatusVariantReq {
+  string id = 1;
+  optional string status = 2;
+}
+
+message UpdateStatusVariantRes {
+  Variant data = 1;
+}
+
+message GetProductVariantReq {
+  string productId = 1;
+  bool product = 2;
+  bool variantValues = 3;
+  GetVariantsWhereRequest where = 4;
+  optional int32 page = 5;
+  optional int32 pagesize = 6;
+}
+
+message GetVariantsWhereRequest {
+  optional string id = 1;
+  optional string height = 2;
+  optional string image = 3;
+  optional string length = 4;
+  optional string status = 5;
+  optional string weight = 6;
+  optional string width = 7;
+}
+
+message GetVariantWhereRequest {
+  enum VariantStatus {
+    ACTIVE = 0;
+    INACTIVE = 1;
+  }
+  optional string id = 1;
+  string status = 3;
+  int32 warehouseId = 4;
+  int32 companyId = 5;
+  int32 price = 6;
+  int32 quantity = 7;
+  int32 reservedQuantity = 8;
+  string extId = 9;
+  string length = 10;
+  string weight = 11;
+  string width = 12;
+  string height = 13;
+  string productId = 14;
+}
+
+message GetProductVariantRes {
+  repeated Variant data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message GetOneVariantReq {
+  string id = 1;
+}
+
+message GetOneVariantRequest {
+  string id = 1;
+}
+
+message GetOneVariantResp {
+  Variant variant = 1;
+}
+
+message GetProductByVariantIdReq {
+  string id = 1;
+}
+
+message GetProductByVariantIdRes {
+  Product data = 1;
+}
+
+message GetOneVariantRes {
+  Variant data = 1;
+}
+
+message ConnectModel {
+  string id = 1;
+}
+
+message TranslatedVariantValue {
+  optional Translate value = 1;
+}
+
+message VariantValueCreateForVariant {
+  //  optional TranslatedVariantValue translation = 1;
+  optional google.protobuf.Struct translation = 1;
+}
+
+message CreateVariantVariantValues {
+  optional VariantValueCreateForVariant create = 1;
+  optional ConnectModel connect = 2;
+}
+
+message CreateProductForVariant {
+  optional string id = 1;
+  optional string status = 2;
+  optional string companyId = 7;
+  optional bool isSale = 8;
+  optional bool isTop = 9;
+  optional bool isPreorder = 10;
+  optional string image = 11;
+  optional int32 min_age = 12;
+  optional string length = 13;
+  optional string weight = 14;
+  optional string width = 15;
+  optional string height = 16;
+  optional string name = 17;
+  optional string description = 18;
+  optional string content = 19;
+}
+
+message CreateVariantProduct {
+  optional CreateProductForVariant create = 1;
+  optional ConnectModel connect = 2;
+}
+
+message AddNewVariantReq {
+  enum VariantStatusEnum {
+    ACTIVE = 0;
+    INACTIVE = 1;
+  }
+  VariantStatusEnum status = 2;
+  int32 warehouseId = 3;
+  int32 companyId = 4;
+  int32 price = 5;
+  //default 0
+  int32 quantity = 6;
+  //  int32 reservedQuantity = 7;
+  optional string extId = 8;
+  optional string length = 9;
+  optional string weight = 10;
+  optional string width = 11;
+  optional string height = 12;
+  repeated Warehouse warehouses = 15;
+  repeated CreateVariantVariantValues variantValues = 13;
+  CreateVariantProduct product = 14;
+  optional string mainField = 16;
+  optional int32 rating = 17;
+}
+
+//message Warehouse {
+//  string id = 1;
+//  string name = 2;
+//  int32 quantity = 3;
+//}
+
+message AddNewVariantRes {
+  Variant data = 1;
+}
+
+message GetAllVariantReq {
+  bool product = 1;
+  bool variantValues = 2;
+  GetVariantWhereRequest where = 3;
+  optional int32 page = 5;
+  optional int32 pagesize = 4;
+}
+
+message GetAllVariantRes {
+  repeated Variant data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message GetAllVariantsReq {
+  optional VariantFilters filters = 1;
+  optional VariantFieldsToLoad fieldsToLoad = 2;
+  optional Pagination pagination = 3;
+}
+
+message GetAllVariantsRes {
+  repeated AllVariants data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message AllVariants {
+  string _id = 1;
+  string status = 2;
+  int32 price = 3;
+  repeated Warehouse warehouses = 4;
+  Values values = 5;
+  string productId = 6;
+  string createdAt = 7;
+  string updatedAt = 8;
+  int32 variantItemId = 9;
+  int32 __v = 10;
+  string variantGroupId = 11;
+  repeated VariantProduct product = 12;
+  repeated VariantBrand brands = 13;
+  repeated VariantCategories categories = 14;
+  repeated VariantGroupsImages variantGroupsImages = 15;
+}
+
+message VariantCategories {
+  string _id = 1;
+  string status = 2;
+  string image = 3;
+  string parentId = 4;
+  repeated VariantFields variantFields = 5;
+  repeated VariantValues variantValues = 6;
+  repeated CharacteristicGroups characteristicGroups = 7;
+  CategoriesTranslation translation = 8;
+  string createdAt = 9;
+  string updatedAt = 10;
+  string slug = 11;
+  int32 __v = 12;
+}
+
+message VariantFields {
+
+}
+
+message CharacteristicGroups {
+
+}
+
+message CategoriesTranslation {
+  Uz uz = 1;
+  Ru ru = 2;
+  En en = 3;
+}
+
+message VariantBrand {
+  string _id = 1;
+  string status = 2;
+  repeated string products = 3;
+  string createdAt = 4;
+  string updatedAt = 5;
+  string slug = 6;
+  int32 __v = 7;
+  BrandTranslation translation = 8;
+}
+
+message BrandTranslation {
+  message Uz {
+    string name = 1;
+    string description = 2;
+  }
+
+  message Ru {
+    string name = 1;
+    string description = 2;
+  }
+
+  message En {
+    string name = 1;
+    string description = 2;
+  }
+
+  Uz uz = 1;
+  Ru ru = 2;
+  En en = 3;
+}
+
+message VariantFilters {
+  string productId = 1;
+  string warehouseId = 2;
+  GetVariantWhereRequest where = 3;
+}
+
+message VariantFieldsToLoad {
+  bool product = 1;
+  bool brand = 2;
+  bool categories = 3;
+}
+
+message Pagination {
+  int32 page = 1;
+  int32 pagesize = 2;
+}
+
+message CreateProductBrandConnectRequest {
+  optional string id = 1;
+  optional string name = 2;
+}
+
+message CreateProductCategoriesConnectRequest {
+  optional string id = 1;
+  optional string status = 2;
+  optional string image = 3;
+  optional string length = 4;
+  optional string weight = 5;
+  optional string width = 6;
+  optional string height = 7;
+}
+
+message CreateProductVariantsConnectRequest {
+  optional string id = 12;
+  optional string status = 1;
+  optional int32 warehouseId = 2;
+  optional int32 companyId = 3;
+  optional int32 price = 4;
+  optional int32 quantity = 5;
+  optional int32 reservedQuantity = 6;
+  optional string extId = 7;
+  optional string length = 8;
+  optional string weight = 9;
+  optional string width = 10;
+  optional string height = 11;
+}
+
+message CreateProductCategoriesRequest {
+  optional CreateProductVariantsConnectRequest create = 1;
+  optional CreateProductCategoriesConnectRequest connect = 2;
+}
+
+message CreateProductBrandRequest {
+  optional Brand create = 1;
+  optional CreateProductBrandConnectRequest connect = 2;
+}
+
+message CreateProductVariantsRequest {
+  optional Variant create = 1;
+  optional CreateProductVariantsConnectRequest connect = 2;
+}
+
+message CreateProductCharacteristicConnectionRequest {
+  string id = 1;
+}
+
+message CreateProductCharacteristicRequest {
+  optional Characteristic create = 1;
+  optional CreateProductCharacteristicConnectionRequest connect = 2;
+}
+
+message UpdateProductRequest {
+  enum ProductStatusEnum {
+    ACTIVE = 0;
+    INACTIVE = 1;
+    PENDING = 2;
+    ARCHIVED = 3;
+  }
+  string id = 1;
+  optional ProductStatusEnum status = 2;
+  optional string companyId = 3;
+  optional bool isSale = 4;
+  optional bool isTop = 5;
+  optional bool isPreorder = 6;
+  optional string image = 7;
+  optional int32 minAge = 8;
+  optional string length = 9;
+  optional string weight = 10;
+  optional string width = 11;
+  optional string height = 12;
+  google.protobuf.Struct translation = 16;
+  optional string brandId = 17;
+  repeated string categories = 18;
+  repeated string variants = 19;
+  repeated string characteristics = 20;
+  string categoryId = 21;
+  int32 rating = 24;
+  optional string material = 25;
+  optional string gender = 26;
+  optional string country = 27;
+  optional string season = 28;
+}
+
+message CreateProductTranslationRequest {
+  Translate name = 1;
+  Translate description = 2;
+  Translate content = 3;
+}
+
+message CreateProductRequest {
+  enum ProductStatusEnum {
+    ACTIVE = 0;
+    INACTIVE = 1;
+    PENDING = 2;
+    ARCHIVED = 3;
+  }
+  ProductStatusEnum status = 1;
+  optional string brandId = 2;
+  repeated string categories = 3;
+  repeated string variants = 4;
+  repeated string characteristics = 5;
+  string companyId = 6;
+  bool isSale = 7;
+  bool isTop = 8;
+  bool isPreorder = 9;
+  string image = 10;
+  int32 minAge = 11;
+  string length = 12;
+  string weight = 13;
+  string width = 14;
+  string height = 15;
+  google.protobuf.Struct translation = 16;
+  string categoryId = 21;
+  int32 rating = 24;
+  optional string material = 25;
+  optional string gender = 26;
+  optional string country = 27;
+  repeated int32 billzIds = 28;
+  optional string season = 29;
+  optional string productType = 30;
+}
+
+message CreateProductResponse {
+  ProductCreate data = 1;
+}
+
+message ProductCreate {
+  optional string id = 1;
+  string status = 2;
+  string brandId = 3;
+  repeated Category categories = 4;
+  repeated Variant variants = 5;
+  repeated Characteristic characteristics = 6;
+  string companyId = 7;
+  bool isSale = 8;
+  bool isTop = 9;
+  bool isPreorder = 10;
+  int32 rating = 24;
+  string image = 11;
+  int32 min_age = 12;
+  string length = 13;
+  string weight = 14;
+  string width = 15;
+  string height = 16;
+  optional string name = 17;
+  optional string description = 18;
+  optional string content = 19;
+  optional string createdAt = 20;
+  optional string updatedAt = 21;
+  google.protobuf.Struct translation = 22;
+  google.protobuf.Struct variantFields = 23;
+  optional string slug=25;
+  optional string material = 26;
+  optional string gender = 27;
+  optional string country = 28;
+  optional string season = 29;
+}
+
+message GetProductsWhereRequest {
+  enum ProductStatusEnum {
+    ACTIVE = 0;
+    INACTIVE = 1;
+    PENDING = 2;
+    ARCHIVED = 3;
+  }
+  optional string             id = 1;
+  optional ProductStatusEnum  status = 2;
+  optional string             companyId = 3;
+  optional bool               isSale = 4;
+  optional bool               isTop = 5;
+  optional bool               isPreorder = 6;
+  optional string             image = 7;
+  optional int32              minAge = 8;
+  optional string             length = 9;
+  optional string             weight = 10;
+  optional string             width = 11;
+  optional string             height = 12;
+}
+
+message GetAllProductsRequest {
+  bool brandId = 1;
+  bool categories = 2;
+  bool variants = 3;
+  bool characteristics = 4;
+  GetProductsWhereRequest where = 5;
+  optional int32 page = 6;
+  optional int32 pagesize = 7;
+}
+
+message GetAllProductsResponse {
+  repeated Product data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message GetOneProductRequest {
+  string id = 1;
+  bool brandId = 2;
+  bool categories = 3;
+  bool variants = 4;
+  bool characteristics = 5;
+}
+
+message GetOneProductResponse {
+  Product data = 1;
+}
+
+message GetProductDetailsImage {
+  string variantGroupId = 1;
+  string url = 2;
+}
+
+message GetProductDetailsVariantItem {
+      string  id       = 1;
+      string  groupId  = 2;
+      string  status   = 3;
+      int32   price    = 4;
+      int32   quantity = 5;
+      string  length   = 6;
+      string  weight   = 7;
+      string  width    = 8;
+      string  height   = 9;
+}
+
+message GetProductDetailsFieldItemValue {
+        string           value       = 1;
+        repeated string  variantIds  = 2;
+        optional string  variantGroupId = 3;
+        int32            rating         = 4;
+}
+
+message GetProductDetailsFieldItem {
+  string name  = 1;
+  string slug  = 2;
+  int32  ord   = 3;
+  string type  = 4;
+  repeated GetProductDetailsFieldItemValue values = 5;
+}
+
+message ProductDetailsVariantGroup {
+  string field = 1;
+  string value = 2;
+  string variantGroupId = 3;
+  string variantGroupSlug = 4;
+  string sku = 5;
+  repeated ProductDetailsVariantItems variants = 6;
+  int32 discountAmount = 7;
+}
+
+message ProductDetailsVariantItems {
+  string id = 1;
+  string groupId = 2;
+  int32 price = 3;
+  int32 quantity = 4;
+  string weight= 5;
+  string value = 6;
+  optional int32 priceWithDiscount = 7;
+
+}
+
+message GetProductDetailsProductCategory {
+  optional string id      = 1;
+  optional string status  = 2;
+  optional string image   = 3;
+  optional string name    = 4;
+  optional string slug    = 5;
+}
+
+message GetProductDetailsProductBrand {
+  optional string id            = 1;
+  optional string status        = 2;
+  optional string image         = 3;
+  optional string name          = 4;
+  optional string description   = 5;
+  optional string slug          = 6;
+}
+
+message GetProductDetailsProduct {
+  optional string id           = 1;
+  optional string status       = 2;
+  optional string categoryId   = 3;
+  optional string name         = 4;
+  optional string companyId    = 5;
+  optional bool   isSale       = 6;
+  optional bool   isTop        = 7;
+  optional bool   isPreorder   = 8;
+  optional string image        = 9;
+  optional int32  minAge       = 10;
+  optional string length       = 11;
+  optional string weight       = 12;
+  optional string width        = 13;
+  optional string height       = 14;
+  optional string description  = 15;
+  optional string content      = 16;
+  optional int32  rating       = 17;
+  optional string material     = 18;
+  optional string gender       = 19;
+  optional string country      = 20;
+  GetProductDetailsProductCategory category = 21;
+  GetProductDetailsProductBrand brand = 22;
+  repeated GetProductDetailsProductCategory categories = 23;
+  optional string companyName = 24;
+  optional string season = 25;
+}
+
+message GetProductDetailsResponse {
+  repeated GetProductDetailsImage images = 1;
+  repeated ProductDetailsVariantGroup variants = 2;
+  GetProductDetailsProduct product = 3;
+  optional string variant_group_id = 4;
+}
+
+message GetCategoriesResponse {
+  repeated Category data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message GetCategoriesRequest {
+  bool variantFields = 1;
+  bool variantValues = 2;
+  GetCategoriesWhereRequest where = 3;
+  optional int32 pagesize = 4;
+  optional int32 page = 5;
+}
+
+message GetCategoriesWhereRequest {
+  enum CategoryStatusEnum {
+    ACTIVE = 0;
+    INACTIVE = 1;
+  }
+  optional string id = 1;
+  optional CategoryStatusEnum status = 2;
+  optional string image = 3;
+  optional string length = 4;
+  optional string weight = 5;
+  optional string width = 6;
+  optional string height = 7;
+  optional string parentId = 8;
+}
+
+message GetCategoryRequest {
+  string id = 1;
+  bool variantFields = 2;
+  bool variantValues = 3;
+}
+
+message GetCategoryResponse {
+  Category data = 1;
+}
+
+message AddNewCategoryRequest {
+  enum CategoryStatusEnum {
+    ACTIVE = 0;
+    INACTIVE = 1;
+  }
+  CategoryStatusEnum status = 1;
+  string image = 3;
+  string length = 4;
+  string weight = 5;
+  optional string parentId = 8;
+  string width = 6;
+  string height = 7;
+  //  CategoryTranslations translation = 8;
+  google.protobuf.Struct translation = 13;
+  optional int32 rating = 9;
+  optional string icon = 10;
+}
+
+message AddNewCategoryResponse {
+  optional Category data = 1;
+}
+
+message UpdateCategoryRequest {
+  //  string id = 1;
+  //  Category data = 2;
+  string id = 9;
+  enum CategoryStatusEnum {
+    ACTIVE = 0;
+    INACTIVE = 1;
+  }
+  CategoryStatusEnum status = 1;
+  string image = 3;
+  string length = 4;
+  string weight = 5;
+  string width = 6;
+  string height = 7;
+  optional string parentId = 10;
+  //  CategoryTranslations translation = 8;
+  google.protobuf.Struct translation = 8;
+  optional int32 rating = 11;
+  optional string icon = 12;
+}
+
+message UpdateCategoryResponse {
+  Category data = 1;
+}
+
+message UpdateStatusCategoryRequest {
+  string id = 1;
+  string status = 2;
+}
+
+message UpdateStatusCategoryResponse {
+  //  optional Category data = 1;
+}
+
+message GetAllBrandsReq {
+  optional QueryCategories query = 1;
+  optional string lang = 2;
+  optional int32 page = 3;
+  optional int32 pagesize = 4;
+}
+
+message GetAllBrandsRes {
+  repeated Brand data = 1;
+  optional int32 page = 2;
+  optional int32 total = 3;
+}
+
+message GetOneBrandReq {
+  string id = 1;
+  optional string lang = 2;
+}
+
+message GetOneBrandRes {
+  Brand data = 1;
+}
+
+message AddNewBrandReq {
+  Brand data = 1;
+}
+
+message AddNewBrandRes {
+  optional Brand data = 1;
+}
+
+message UpdateBrandReq {
+  string id = 1;
+  Brand data = 2;
+}
+
+message UpdateBrandRes {
+  Brand data = 1;
+}
+
+message UpdateStatusBrandRes {
+  optional Brand data = 1;
+}
+
+message UpdateStatusBrandReq {
+  string id = 1;
+  string status = 2;
+}
+
+message DeleteProductRequest {
+  string id = 1;
+}
+
+//---------- for all ------------
+
+message DelReq {
+  string id = 1;
+}
+
+message DelRes {
+  string result = 1;
+  repeated string errors = 2;
+}
+
+message DeleteOneResponse {
+  bool acknowledged = 1;
+  int32 deletedCount = 2;
+}
+
+message QueryCategories {
+  optional string status = 1;
+}
+
+message QueryBrand {
+  optional string status = 1;
+}
+
+// ----------- MODELS -----------
+
+message Translate {
+  string uz = 1;
+  string ru = 2;
+  string en = 3;
+}
+
+//message CategoryTranslations {
+//  Translate name = 1;
+//  Translate description = 2;
+//}
+
+//message Translations {
+//  string lang = 1;
+//  string name = 2;
+//  optional string description = 3;
+//  optional string value = 4;
+//}
+
+message Category {
+  optional string id = 1;
+  string status = 2;
+  string image = 3;
+  string length = 4;
+  string weight = 5;
+  string width = 6;
+  string height = 7;
+  string parentId = 8;
+  google.protobuf.Struct translation = 13;
+  optional string name = 9;
+  optional string description = 10;
+  optional string createdAt = 11;
+  optional string updatedAt = 12;
+  optional string slug = 14;
+  optional int32 rating = 15;
+  optional string icon = 16;
+}
+
+//message BrandTranslation {
+//  Translate name = 1;
+//  Translate description = 2;
+//}
+
+message Brand {
+  optional string id = 1;
+  string status = 2;
+  string image = 3;
+  optional string name = 4;
+  optional string description = 5;
+  optional string createdAt = 6;
+  optional string updatedAt = 7;
+  optional string slug = 9;
+  //  optional BrandTranslation translation = 8;
+  optional google.protobuf.Struct translation = 8;
+}
+
+//message VariantFieldTranslation {
+//  Translate name = 1;
+//}
+
+message VariantField  {
+  optional string _id = 1;
+  string ord = 3;
+  string type = 4;
+  string slug = 5;
+  //  optional VariantFieldTranslation translation = 6;
+  optional google.protobuf.Struct translation = 6;
+  repeated Category categories = 7;
+  repeated VariantValue variantValues = 8;
+  optional string value = 9;
+  optional string createdAt = 10;
+  optional string updatedAt = 11;
+  optional string name = 12;
+}
+
+message VariantValue {
+  optional string id = 1;
+  optional VariantField variantField = 4;
+  repeated Variant variants = 9;
+  optional string value = 6;
+  optional string createdAt = 7;
+  optional string updatedAt = 8;
+}
+
+message Variant {
+  enum VariantStatus {
+    ACTIVE = 0;
+    INACTIVE = 1;
+  }
+  optional string id = 1;
+  //  optional Product product = 2;
+  optional string productId = 2;
+  optional string status = 3;
+  int32 companyId = 5;
+  int32 price = 6;
+  int32 quantity = 7;
+  int32 reservedQuantity = 8;
+  string extId = 9;
+  string length = 10;
+  string weight = 11;
+  string width = 12;
+  string height = 13;
+  repeated VariantPhoto variantPhotos = 18;
+  optional string createdAt = 14;
+  optional string updatedAt = 15;
+  optional VariantValues values = 16;
+  //  repeated VariantField variantValues = 16;
+  repeated Warehouse warehouses = 17;
+  repeated Variant variants = 19;
+  string sku = 20;
+  optional int32 discountPercentage = 21;
+  optional string barcode = 22;
+  optional int32 rating = 23;
+  optional int32 billzId = 24;
+  optional VariantGroup variantGroupId = 25;
+}
+
+message Warehouse {
+  string id = 1;
+  string name = 2;
+  int32 quantity = 3;
+}
+
+//message RepeatedVariantField {
+//  repeated VariantField variantField = 1;
+//}
+
+message RepeatedVariantValue {
+  repeated VariantField variantValue = 1;
+  string status = 3;
+  int32 warehouseId = 4;
+  int32 companyId = 5;
+  int32 price = 6;
+  int32 quantity = 7;
+  int32 reservedQuantity = 8;
+  string extId = 9;
+  string length = 10;
+  string weight = 11;
+  string width = 12;
+  string height = 13;
+  optional string createdAt = 14;
+  optional string updatedAt = 15;
+}
+
+message Characteristic {
+  enum CharacteristicStatus {
+    ACTIVE = 0;
+    INACTIVE = 1;
+    PENDING = 2;
+    ARCHIVED = 3;
+  }
+  optional string id = 1;
+  CharacteristicStatus status = 2;
+  optional Product product = 3;
+  optional CharacteristicGroup group = 4;
+  optional string createdAt = 5;
+  optional string updatedAt = 6;
+}
+
+message CharacteristicGroup {
+  optional string id = 1;
+  optional string createdAt = 2;
+  optional string updatedAt = 3;
+  repeated Product products = 4;
+  repeated Characteristic characteristics = 5;
+  repeated Category categories = 6;
+  optional string name = 7;
+}
+
+message Product {
+    message Uz {
+        string name = 1;
+        string content = 2;
+      }
+
+  message Ru {
+    string name = 1;
+    string content = 2;
+  }
+
+  message En {
+    string name = 1;
+    string content = 2;
+  }
+
+  message Translation {
+    Uz uz = 1;
+    Ru ru = 2;
+    En en = 3;
+  }
+
+  optional string id = 1;
+  string status = 2;
+//  optional Brand brandId = 3;
+  string brandId = 3;
+  repeated Category categories = 4;
+  repeated Variant variants = 5;
+  repeated Characteristic characteristics = 6;
+  string companyId = 7;
+  bool isSale = 8;
+  bool isTop = 9;
+  bool isPreorder = 10;
+  string image = 11;
+  int32 min_age = 12;
+  string length = 13;
+  string weight = 14;
+  string width = 15;
+  string height = 16;
+  optional string name = 17;
+  optional string description = 18;
+  optional string content = 19;
+  optional string createdAt = 20;
+  optional string updatedAt = 21;
+  optional Translation translation = 22;
+  // google.protobuf.Struct variantFields = 23;
+  int32 rating = 24;
+  string categoryId = 25;
+  string slug = 26;
+  optional string material = 27;
+  optional string gender = 28;
+  optional string country = 29;
+  optional VariantGroupProduct group=30;
+  optional bool isPublished = 31;
+  optional string brand = 32;
+  optional string category = 33;
+  optional string season = 34;
+}
+
+message VariantGroup {
+  optional string _id = 1;
+  repeated string variants = 2;
+  repeated VariantGroupImages images = 3;
+  string productId = 4;
+  optional string createdAt = 5;
+  optional string updatedAt = 6;
+  optional string sku = 7;
+  optional string slug=8;
+  optional int32 discountAmount = 9;
+  optional bool isPublished = 10;
+  optional Product product = 11;
+  optional Category category = 12;
+  repeated string sizes = 13;
+  int32 minPrice = 14;
+  optional string value = 15;
+  optional int32 minPriceWithDiscount = 16;
+}
+
+message VariantGroupProduct {
+  optional string id = 1;
+  repeated string variants = 2;
+  repeated VariantGroupImages images = 3;
+  string productId = 4;
+  optional string createdAt = 5;
+  optional string updatedAt = 6;
+  optional string sku = 7;
+  optional string slug=8;
+}
+
+message VariantGroupSlug {
+  optional string id = 1;
+  repeated Variant variants = 2;
+  repeated VariantGroupImages images = 3;
+  Product productId = 4;
+  optional string createdAt = 5;
+  optional string updatedAt = 6;
+  optional string sku = 7;
+  optional string slug=8;
+}
+
+message VariantGroupImages {
+  string id = 1;
+  string image=2;
+}

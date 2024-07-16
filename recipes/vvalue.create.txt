@@ -1,0 +1,39 @@
+{
+    "translation": {
+        "value": {
+            "en": "id sit",
+            "ru": "ut ipsum cillum",
+            "uz": "ad quis sint amet"
+        }
+    },
+    "variantField": {
+        "create": {
+            "companyId": 1427219929,
+            "createdAt": "ullamco",
+            "extId": "magna",
+            "height": "commodo est incididunt anim",
+            "id": "sint cillum",
+            "length": "ut irure pariatur aliquip",
+            "price": -1645699541,
+            "quantity": -1877738102,
+            "reservedQuantity": 851569916,
+            "status": "INACTIVE",
+            "updatedAt": "exercitation dolor esse nulla",
+            "warehouseId": 655854739,
+            "weight": "commodo consectetur velit ex",
+            "width": "tempor deserunt irure eu"
+        },
+        "ord": "nulla aliquip",
+        "slug": "Duis exercitation",
+        "translation": {
+            "name": {
+                "en": "eu",
+                "ru": "ullamco proident sit anim",
+                "uz": "est ut culpa id ut"
+            }
+        },
+        "type": "enim",
+        "value": "aliquip est nisi ea non"
+    },
+    "variants": []
+}

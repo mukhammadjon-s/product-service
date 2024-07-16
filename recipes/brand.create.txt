@@ -1,0 +1,50 @@
+add
+
+{
+    "data": {
+        "description": "Ut",
+        "image": "mollit",
+        "name": "elit dolore eu in",
+        "status": "cupidatat",
+        "translation": {
+            "fields": {
+                "uz": {
+                    "structValue": {
+                        "fields": {
+                            "name": {
+                                "stringValue": "laboris"
+                            },
+                            "description": {
+                                "stringValue": "aliqua adipisicing dolor"
+                            }
+                        }
+                    }
+                },
+                "ru": {
+                    "structValue": {
+                        "fields": {
+                            "name": {
+                                "stringValue": "cillum aute"
+                            },
+                            "description": {
+                                "stringValue": "ut commodo reprehenderit laborum"
+                            }
+                        }
+                    }
+                },
+                "en": {
+                    "structValue": {
+                        "fields": {
+                            "name": {
+                                "stringValue": "sint non anim"
+                            },
+                            "description": {
+                                "stringValue": "sunt in"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

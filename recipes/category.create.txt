@@ -1,0 +1,62 @@
+add
+
+{
+    "height": "in officia",
+    "image": "qui",
+    "length": "mollit tempor incididunt",
+    "status": 1,
+    "translations": {
+        "description": {
+            "en": "velit deserunt non in",
+            "ru": "id",
+            "uz": "deserunt nulla"
+        },
+        "name": {
+            "en": "est",
+            "ru": "Ut exercitation fugiat ullamco",
+            "uz": "commodo in"
+        }
+    },
+    "translation": {
+        "fields": {
+            "uz": {
+                "structValue": {
+                    "fields": {
+                        "name": {
+                            "stringValue": "laboris"
+                        },
+                        "description": {
+                            "stringValue": "aliqua adipisicing dolor"
+                        }
+                    }
+                }
+            },
+            "ru": {
+                "structValue": {
+                    "fields": {
+                        "name": {
+                            "stringValue": "cillum aute"
+                        },
+                        "description": {
+                            "stringValue": "ut commodo reprehenderit laborum"
+                        }
+                    }
+                }
+            },
+            "en": {
+                "structValue": {
+                    "fields": {
+                        "name": {
+                            "stringValue": "sint non anim"
+                        },
+                        "description": {
+                            "stringValue": "sunt in"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "weight": "dolore ut reprehenderit cupidatat sint",
+    "width": "in do commodo"
+}

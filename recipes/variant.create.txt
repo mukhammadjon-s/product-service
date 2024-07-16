@@ -1,0 +1,239 @@
+{
+    "companyId": -743919666,
+    "extId": "laborum culpa Excepteur et quis",
+    "height": "labore sit pariatur ipsum",
+    "length": "elit adipisicing minim",
+    "price": -1308135748,
+    "product": {
+        "create": {
+            "companyId": "incididunt",
+            "content": "sed sit fugiat culpa est",
+            "description": "quis ea ut ex",
+            "height": "Excepteur aute nisi pariatur commodo",
+            "image": "exercitation cupidatat et veniam ea",
+            "isPreorder": false,
+            "isSale": true,
+            "isTop": true,
+            "length": "proident",
+            "min_age": -2068079792,
+            "name": "sunt sint",
+            "status": "ACTIVE",
+            "weight": "occaecat",
+            "width": "nisi cupidatat in"
+        }
+    },
+    "quantity": 2089678170,
+    "reservedQuantity": -440864126,
+    "status": "ACTIVE",
+    "variantValues": [
+        {
+            "create": {
+                "translation": {
+                    "value": {
+                        "en": "eu",
+                        "ru": "irure aliquip dolor aute",
+                        "uz": "laborum in"
+                    }
+                }
+            }
+        }
+    ],
+    "warehouseId": -278312342,
+    "weight": "aliqua quis velit dolor",
+    "width": "laborum proident"
+}
+
+
+
+
+{
+    "companyId": 677141702,
+    "extId": "amet deserunt",
+    "height": "dolore occaecat veniam",
+    "length": "nostrud incididunt sed",
+    "price": 733563786,
+    "quantity": -1963770314,
+    "status": "ACTIVE",
+    "variantFields": [
+        {
+            "slug": "qui Excepteur culpa cupidatat nostrud",
+            "ord": "veniam minim id eu",
+            "type": "et ut dolore eiusmod",
+            "translation": {
+                "fields": {
+                    "uz": {
+                        "structValue": {
+                            "fields": {
+                                "name": {
+                                    "stringValue": "asdsad"
+                                }
+                            }
+                        }
+                    },
+                    "ru": {
+                        "structValue": {
+                            "fields": {
+                                "name": {
+                                    "stringValue": "asdsad"
+                                }
+                            }
+                        }
+                    },
+                    "en": {
+                        "structValue": {
+                            "fields": {
+                                "name": {
+                                    "stringValue": "asdsad"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "values": [
+                {
+                    "translation": {
+                        "fields": {
+                            "uz": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            },
+                            "ru": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            },
+                            "en": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "ord": "amet",
+            "type": "et veniam consequat qui ullamco",
+            "slug": "anim fugiat Lorem Ut sunt",
+            "values": [
+                {
+                    "translation": {
+                        "fields": {
+                            "uz": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            },
+                            "ru": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            },
+                            "en": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "translation": {
+                        "fields": {
+                            "uz": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            },
+                            "ru": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            },
+                            "en": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "translation": {
+                        "fields": {
+                            "uz": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            },
+                            "ru": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            },
+                            "en": {
+                                "structValue": {
+                                    "fields": {
+                                        "name": {
+                                            "stringValue": "asdsad"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "warehouseId": -1360982656,
+    "weight": "do ad laboris proident",
+    "width": "dolore Excepteur Lorem incididunt"
+}

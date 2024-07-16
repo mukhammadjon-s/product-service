@@ -1,0 +1,224 @@
+# Request Payload
+{
+    "brand": {
+        "create": {
+            "description": "culpa",
+            "image": "sunt laboris cupidatat consectetur nulla",
+            "name": "irure nostrud veniam sit",
+            "status": "ACTIVE",
+            "translation": {
+                "description": {
+                    "en": "description_en",
+                    "ru": "description_ru",
+                    "uz": "description_uz"
+                },
+                "name": {
+                    "en": "name_en",
+                    "ru": "name_ru",
+                    "uz": "name_uz"
+                }
+            }
+        }
+    },
+    "categories": [
+        {
+            "connect": {
+                "id": "62e6cc7b1b813c5185103e4c"
+            }
+        }
+    ],
+    "characteristics": [
+        {
+            "create": {
+                "status": "ACTIVE",
+                "groupId": "Lorem esse"
+            }
+        },
+        {
+            "create": {
+                "status": "ACTIVE",
+                "groupId": "cupidatat velit"
+            }
+        },
+        {
+            "create": {
+                "groupId": "enim nulla commodo laborum Excepteur",
+                "status": "ACTIVE"
+            }
+        }
+    ],
+    "companyId": "nulla",
+    "height": "officia do qui",
+    "image": "eiusmod non enim eu nisi",
+    "isPreorder": true,
+    "isSale": false,
+    "isTop": true,
+    "length": "laboris",
+    "minAge": -1689226099,
+    "status": 0,
+    "translation": {
+        "content": {
+            "en": "aute esse",
+            "ru": "veniam cupidatat est adipisicing",
+            "uz": "in sit elit"
+        },
+        "description": {
+            "en": "sint",
+            "ru": "tempor ut consectetur",
+            "uz": "est officia proident anim"
+        },
+        "name": {
+            "en": "pariatur sed",
+            "ru": "magna",
+            "uz": "dolore fugiat aliqua tempor"
+        }
+    },
+    "variants": [
+        {
+            "create": {
+                "reservedQuantity": 233463009,
+                "price": -54396500,
+                "weight": "minim",
+                "height": "tempor dolor",
+                "warehouseId": -569470860,
+                "companyId": 164816252,
+                "status": "ACTIVE",
+                "width": "do dolor adipisicing",
+                "length": "ipsum cillum veniam",
+                "extId": "dolor",
+                "quantity": -398125381
+            }
+        },
+        {
+            "create": {
+                "width": "labore occaecat",
+                "height": "eiusmod culpa cupidatat",
+                "weight": "commodo",
+                "extId": "laborum dolore",
+                "warehouseId": 818708331,
+                "quantity": -767593679,
+                "status": "ACTIVE",
+                "companyId": -1087891604,
+                "length": "reprehenderit deserunt",
+                "reservedQuantity": -1603435033,
+                "price": -428618606
+            }
+        },
+        {
+            "create": {
+                "price": -1287581071,
+                "companyId": -1230838900,
+                "reservedQuantity": -44325656,
+                "id": "cupidatat eu qui Duis sit",
+                "height": "cillum",
+                "warehouseId": 1858373981,
+                "quantity": -1323163002,
+                "status": "ACTIVE",
+                "weight": "et laborum velit non dolore",
+                "length": "exercitation id",
+                "extId": "incididunt Excepteur sit nulla",
+                "width": "eiusmod"
+            }
+        }
+    ],
+    "weight": "dolor culpa do",
+    "width": "id ut nostrud enim veniam"
+}
+
+# Response
+{
+    "data": {
+        "status": "ACTIVE",
+        "brand": {
+            "status": "ACTIVE",
+            "image": "sunt laboris cupidatat consectetur nulla",
+            "name": "irure nostrud veniam sit",
+            "createdAt": "2022-07-31T18:47:58.929Z",
+            "updatedAt": "2022-07-31T18:47:58.929Z",
+            "translation": {}
+        },
+        "categories": [
+            {
+                "status": "ACTIVE",
+                "image": "https://google.com",
+                "length": "10km",
+                "weight": "20lb",
+                "width": "11km",
+                "height": "25km"
+            }
+        ],
+        "variants": [
+            {
+                "status": "ACTIVE",
+                "warehouseId": -569470860,
+                "companyId": 164816252,
+                "price": -54396500,
+                "quantity": -398125381,
+                "reservedQuantity": 233463009,
+                "extId": "dolor",
+                "length": "ipsum cillum veniam",
+                "weight": "minim",
+                "width": "do dolor adipisicing",
+                "height": "tempor dolor",
+                "createdAt": "2022-07-31T18:47:58.944Z",
+                "updatedAt": "2022-07-31T18:47:58.944Z"
+            },
+            {
+                "status": "ACTIVE",
+                "warehouseId": 818708331,
+                "companyId": -1087891604,
+                "price": -428618606,
+                "quantity": -767593679,
+                "reservedQuantity": -1603435033,
+                "extId": "laborum dolore",
+                "length": "reprehenderit deserunt",
+                "weight": "commodo",
+                "width": "labore occaecat",
+                "height": "eiusmod culpa cupidatat",
+                "createdAt": "2022-07-31T18:47:58.944Z",
+                "updatedAt": "2022-07-31T18:47:58.944Z"
+            },
+            {
+                "status": "ACTIVE",
+                "warehouseId": 1858373981,
+                "companyId": -1230838900,
+                "price": -1287581071,
+                "quantity": -1323163002,
+                "reservedQuantity": -44325656,
+                "extId": "incididunt Excepteur sit nulla",
+                "length": "exercitation id",
+                "weight": "et laborum velit non dolore",
+                "width": "eiusmod",
+                "height": "cillum",
+                "createdAt": "2022-07-31T18:47:58.944Z",
+                "updatedAt": "2022-07-31T18:47:58.944Z"
+            }
+        ],
+        "characteristics": [
+            {
+                "status": "ACTIVE",
+                "groupId": "Lorem esse"
+            },
+            {
+                "status": "ACTIVE",
+                "groupId": "cupidatat velit"
+            },
+            {
+                "status": "ACTIVE",
+                "groupId": "enim nulla commodo laborum Excepteur"
+            }
+        ],
+        "companyId": "nulla",
+        "isSale": false,
+        "isTop": true,
+        "isPreorder": true,
+        "image": "eiusmod non enim eu nisi",
+        "minAge": -1689226099,
+        "length": "laboris",
+        "weight": "dolor culpa do",
+        "width": "id ut nostrud enim veniam",
+        "height": "officia do qui",
+        "createdAt": "2022-07-31T18:47:58.971Z",
+        "updatedAt": "2022-07-31T18:47:58.971Z"
+    }
+}
